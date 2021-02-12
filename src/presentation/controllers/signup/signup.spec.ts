@@ -1,8 +1,14 @@
-import { AccountModel } from '../../domain/models/account'
-import { AddAccount, AddAccountModel } from '../../domain/usecases/add-account'
-import { InvalidParamError, MissingParamError } from '../errors'
-import { EmailValidator, HttpRequest, HttpResponse } from '../protocols'
 import { SignUpController } from './signup'
+import { InvalidParamError, MissingParamError } from '../../errors'
+import {
+  AddAccount,
+  AddAccountModel,
+  EmailValidator,
+  AccountModel,
+  HttpRequest,
+  HttpResponse
+} from './signup-protocols'
+
 interface SutTypes {
   sut: SignUpController
   emailValidatorStub: EmailValidator
@@ -20,9 +26,7 @@ const makeEmailValidator = (): EmailValidator => {
 
 const makeAddAccount = (): AddAccount => {
   class AddAccountSpy implements AddAccount {
-    private account: AddAccountModel
     add (account: AddAccountModel): AccountModel {
-      this.account = account
       const fakeAccount = {
         id: 'valid_id',
         name: 'valid_name',
