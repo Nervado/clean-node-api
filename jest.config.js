@@ -1,5 +1,5 @@
 module.exports = {
-  watchPathIgnorePatterns: ['globalConfig'],
+  watchPathIgnorePatterns: ['globalConfig.js'],
   roots: ['<rootDir>/src'],
   collectCoverageFrom: ['<rootDir>/src/**/*.ts'],
   coverageDirectory: 'coverage',
